@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {Container} from 'reactstrap';
 
 export default class NewPage extends React.Component {
     state = {
@@ -18,18 +19,18 @@ export default class NewPage extends React.Component {
         })
     }
 
-    handleSave =(e)=> {
+    handleSave = async (e) => {
         e.preventDefault();
 
-        const _id = this.props.onSave(this.state.chapter);
+        const _id = await this.props.onSave(this.state.chapter);
         this.props.history.replace(`/chapters/${_id}`)
     }
 
     render(){
         const {chapter} = this.state;
         return(
-            <div className="add-note">
-                <h2>New Chapter</h2>
+            <Container className="add-note">
+                <h3>Add new Chapter</h3>
                 <form className="col-4" onSubmit={this.handleSave}>
                     <div className="form-group">
                         <label>Chapter title</label>
@@ -44,7 +45,7 @@ export default class NewPage extends React.Component {
                         <Link to="/chapters">cancel</Link>
                     </div>
                 </form>
-            </div>
+            </Container>
         )
     }
 }
