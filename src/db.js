@@ -7,9 +7,11 @@ let remotedb = 'http://192.168.1.200:5984/companies_act';
 
 let db = new PouchDB('chaptersDB');
 
+PouchDB.replicate(localdb, remotedb); 
+console.log ("Database replicated successfully from client to server");
 //Replicating a local database to Remote
 PouchDB.replicate(remotedb, localdb);
-console.log("Database replicated successfully");
+console.log("Database replicated successfully from server to client");
 
 //Retrieving all the documents in PouchDB
 db.allDocs({include_docs: true, attachments: true}, function(err, docs) {
