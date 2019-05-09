@@ -1,6 +1,24 @@
 import PouchDB from 'pouchdb';
 
 
+let localdb = 'chaptersDB';
+
+let remotedb = 'http://localhost:5984/companies_act';
+
+let db = new PouchDB('chaptersDB');
+
+//Replicating a local database to Remote
+PouchDB.replicate(remotedb, localdb);
+console.log("Database replicated successfully");
+
+//Retrieving all the documents in PouchDB
+db.allDocs({include_docs: true, attachments: true}, function(err, docs) {
+    if (err) {
+        return console.log(err);
+    } else {
+        console.log(docs.rows);
+    }
+});
 export default class DB{
 
     constructor(){
@@ -21,5 +39,9 @@ export default class DB{
         const res = await this.db.post({ ...chapter });
         return res;
     }
+
+    
+
+    
 
 }

@@ -28,13 +28,13 @@ class App extends React.Component{
     loading : true
   }
 
-  componentWillMount(){
-    const nano = require('nano')('http://localhost:5984');
-      nano.db.use('companies_act').get('c161ff0d8cc3773c2847bcff9500143c')
-        .then((body) => {
-          console.log(body);
-        });
-  }
+  // componentWillMount(){
+  //   const nano = require('nano')('http://localhost:5984');
+  //     nano.db.use('companies_act').get('c161ff0d8cc3773c2847bcff9500143c')
+  //       .then((body) => {
+  //         console.log(body);
+  //       });
+  // }
 
   async componentDidMount () {
 
@@ -42,6 +42,8 @@ class App extends React.Component{
     this.setState({
       chapters
     })
+
+    console.log("chapters", chapters)
   }
 
   handleSave = async (chapter) => {
@@ -78,6 +80,7 @@ class App extends React.Component{
 
   render(){
     return(
+      
       <BrowserRouter>
         <div className="App">
           <Navbar /> 

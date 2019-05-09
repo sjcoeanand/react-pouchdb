@@ -9,8 +9,8 @@ export default class ShowPage extends React.Component {
         }
         return(
             <div>
-                <h1>{chapters.title}</h1>
-                <h2>{chapters.body}</h2>
+                <h1>{chapters.section_name}</h1>
+                <h2>{chapters.section_body}</h2>
             </div>
         )
     }
