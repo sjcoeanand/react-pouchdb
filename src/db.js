@@ -3,7 +3,7 @@ import PouchDB from 'pouchdb';
 
 let localdb = 'chaptersDB';
 
-let remotedb = 'http://localhost:5984/companies_act';
+let remotedb = 'http://192.168.1.200:5984/companies_act';
 
 let db = new PouchDB('chaptersDB');
 
