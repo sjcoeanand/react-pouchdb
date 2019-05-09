@@ -7,6 +7,7 @@ export default class NewPage extends React.Component {
         chapter : {
             section_name : "",
             section_body : "",
+            _attachments :"",
             createdAt : undefined,
             updatedAt : undefined
         }
