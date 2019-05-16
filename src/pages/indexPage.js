@@ -6,7 +6,7 @@ export default class IndexPage extends React.Component {
     render () {
         return(
             <Container className="App">
-                <h1>Section List</h1>
+                <h1>Chapter List</h1>
                 <NodeList chapters={this.props.chapters} />
             </Container>
         );

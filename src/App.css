@@ -1,12 +1,8 @@
 .main{}
 .chapter-list{
-    border: 2px solid #949292;
-    margin-bottom: 1px;
-    flex-basis: 24%;
-    max-width: 24%;
     padding: 10px;
-    margin: 5px;
-    
 }
-.chapter-list h2{font-size: 20px;}
+.card{border: 2px solid rgba(0, 0, 0, 0.125);}
+.chapter-list img, .section-list img{max-width: 150px; }
+.chapter-list h2{font-size: 20px; text-transform: uppercase;}
 .form-button button{margin-right: 10px;}

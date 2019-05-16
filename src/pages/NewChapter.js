@@ -5,9 +5,8 @@ import {Container} from 'reactstrap';
 export default class NewPage extends React.Component {
     state = {
         chapter : {
-            section_name : "",
-            section_body : "",
-            _attachments :"",
+            chapter_name : "",
+            chapter_body : "",
             createdAt : undefined,
             updatedAt : undefined
         }
@@ -35,11 +34,11 @@ export default class NewPage extends React.Component {
                 <form className="col-4" onSubmit={this.handleSave}>
                     <div className="form-group">
                         <label>Chapter title</label>
-                        <input type="text" className="form-control" name="section_name" value ={chapter.section_name} onChange={this.updateValue} />
+                        <input type="text" className="form-control" name="chapter_name" value ={chapter.chapter_name} onChange={this.updateValue} />
                     </div>
                     <div className="form-group">
                         <label>Chapter body</label>
-                        <textarea type="text" className="form-control" name="section_body" value ={chapter.section_body} onChange={this.updateValue} />
+                        <textarea type="text" className="form-control" name="chapter_body" value ={chapter.chapter_body} onChange={this.updateValue} />
                     </div>
                     <div className="form-button">
                         <button className="btn btn-primary">Save</button>

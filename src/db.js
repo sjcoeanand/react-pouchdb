@@ -3,22 +3,26 @@ import PouchDB from 'pouchdb';
 
 let localdb = 'chaptersDB';
 
-let remotedb = 'http://192.168.1.200:5984/companies_act';
+let remotedb = 'http://192.168.1.200:5984/companies_acts';
 
 let db = new PouchDB('chaptersDB');
 
-PouchDB.replicate(localdb, remotedb); 
-console.log ("Database replicated successfully from client to server");
-//Replicating a local database to Remote
+// PouchDB.replicate(localdb, remotedb); 
+// console.log ("Database replicated successfully from client to server");
 PouchDB.replicate(remotedb, localdb);
 console.log("Database replicated successfully from server to client");
 
+PouchDB.sync('remotedb', 'localdb', {
+  live: true,
+  retry: true
+})
+
 //Retrieving all the documents in PouchDB
-db.allDocs({include_docs: true, attachments: true}, function(err, docs) {
+db.allDocs({include_docs: true, 'endkey': '_design', 'options.inclusive_end': false }, function(err, docs) {
     if (err) {
         return console.log(err);
     } else {
-        console.log(docs.rows);
+        console.log("dbcon ",docs.rows);
     }
 });
 export default class DB{
@@ -28,7 +32,7 @@ export default class DB{
     }
 
     async getAllChapters () {
-        let allChapters = await this.db.allDocs({include_docs : true});
+        let allChapters = await this.db.allDocs({include_docs : true, 'endkey': '_design', 'options.inclusive_end': false});
         let chapters = {};
         allChapters.rows.forEach(n => chapters[n.id] = n.doc);
         return chapters;
